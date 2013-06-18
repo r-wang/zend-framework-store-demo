@@ -1,0 +1,20 @@
+<?php
+tree ( $this->categories );
+
+function tree($data) {
+	foreach ( $data as $subarr ) {
+		if (empty ( $subarr ['children'] )) {
+			echo "<li><a href=\"/shopping/category?id=" . $subarr ['id'] . "\">";
+			echo $subarr ['text'];
+			echo "</a></li>";
+		} else {
+			echo "<li><a href=\"/shopping/category?id=" . $subarr ['id'] . "\">";
+			echo $subarr ['text'];
+			echo "</li></a>";
+			
+			echo "<ul>";
+			tree ( $subarr ['children'] );
+			echo "</ul>";
+		}
+	}
+}

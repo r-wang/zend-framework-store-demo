@@ -1,0 +1,137 @@
+<!--各controller/action刷新的内容-->
+<script type="text/javascript" src="/js/validateRegistrationForm.js">
+</script>
+<div id="content">
+	<div class="top">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center">
+			<h1>注册新用户</h1>
+		</div>
+	</div>
+	<div class="middle">
+		<p>
+			已经是注册用户?,去<a href="/customer/loginui"><font color="brown">登录</font></a>
+		</p>
+		<div class="content">
+
+			<div class="form">
+
+				<form id="register-form" action="/customer/register" method="post">
+					<p class="note">
+						带<span class="required">*</span>为必填字段.
+					</p>
+
+					<div id="register-form_es_" class="errorSummary"
+						style="display: none">
+						<p>Please fix the following input errors:</p>
+						<ul>
+							<li>dummy</li>
+						</ul>
+					</div>
+					<b style="margin-bottom: 2px; display: block;">您的个人信息：</b>
+					<div
+						style="background: #F7F7F7; border: 1px solid #DDDDDD; padding: 10px; margin-bottom: 10px;">
+						<div class="row">
+							<label for="Customer_name" class="required">用户名称 <span
+								class="required">*</span></label> <input size="50"
+								maxlength="60" name="Customer[name]" id="Customer_name"
+								type="text" value="" />
+							<div class="errorMessage" id="Customer_name_em_"
+								style="display: none"></div>
+						</div>
+
+						<div class="row">
+							<label for="Customer_email" class="required">电子邮箱 <span
+								class="required">*</span></label> <input size="50"
+								maxlength="128" name="Customer[email]" id="Customer_email"
+								type="text" value="" />
+							<div class="errorMessage" id="Customer_email_em_"
+								style="display: none"></div>
+						</div>
+
+						<div class="row">
+							<label for="Customer_telephone" class="required">固定电话 <span
+								class="required">*</span></label> <input size="50"
+								maxlength="20" name="Customer[telephone]"
+								id="Customer_telephone" type="text" value="" />
+							<div class="errorMessage" id="Customer_telephone_em_"
+								style="display: none"></div>
+						</div>
+						<div class="row">
+							<label for="Customer_mobile">移动电话</label> <input size="50"
+								maxlength="20" name="Customer[mobile]" id="Customer_mobile"
+								type="text" value="" />
+							<div class="errorMessage" id="Customer_mobile_em_"
+								style="display: none"></div>
+						</div>
+						<div class="row">
+							<label for="Customer_address" class="required"> 地 址 <span
+								class="required">*</span></label> <input size="50"
+								maxlength="128" name="Customer[address]" id="Customer_address"
+								type="text" />
+							<div class="errorMessage" id="Customer_address_em_"
+								style="display: none"></div>
+						</div>
+					</div>
+					<b style="margin-bottom: 2px; display: block;">您的密码</b>
+					<div
+						style="background: #F7F7F7; border: 1px solid #DDDDDD; padding: 10px; margin-bottom: 10px;">
+
+						<div class="row">
+							<label for="Customer_password" class="required">您的密码 <span
+								class="required">*</span></label> <input size="50"
+								maxlength="60" name="Customer[password]" id="Customer_password"
+								type="password" value="" />
+							<div class="errorMessage" id="Customer_password_em_"
+								style="display: none"></div>
+						</div>
+
+						<div class="row">
+							<label for="Customer_verifyPassword" class="required">确认密码 <span
+								class="required">*</span></label> <input size="50"
+								maxlength="60" name="Customer[verifyPassword]"
+								id="Customer_verifyPassword" type="password" />
+							<div class="errorMessage" id="Customer_verifyPassword_em_"
+								style="display: none"></div>
+						</div>
+
+					</div>
+
+
+
+
+
+
+					<div class="buttons">
+						<!--        <input type="checkbox" value="1" id="agree"/> -->
+						<table>
+							<tbody>
+								<tr>
+									<td width="75" align="right"><a class="button submit"><span>&nbsp;提
+												交&nbsp;</span></a></td>
+									<td width="75" align="right"><a class="button"
+										onclick="javascript:document.getElementById('register-form').reset();"><span>&nbsp;重
+												写&nbsp;</span></td>
+
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+
+				</form>
+			</div>
+			<!-- form -->
+		</div>
+	</div>
+	<!-- ！middle-->
+
+	<div class="bottom">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center"></div>
+	</div>
+</div>
+<!-- content -->

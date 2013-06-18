@@ -1,0 +1,92 @@
+<!--各controller/action刷新的内容-->
+<div id="content">
+	<div class="top">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center">
+			<h1>我 的 购 物 车</h1>
+		</div>
+	</div>
+
+	<div class="middle">
+		<form id="cart" action="/cart/updatecart" method="post">
+			<table class="cart">
+				<tbody>
+					<tr backgroundcolor="brown" color="#FFFFFF">
+						<th align="center">清除</th>
+						<th align="center">图片</th>
+						<th align="left">名称</th>
+						<th align="left">说明</th>
+						<th align="right">数量</th>
+						<th align="right">单价</th>
+						<th align="right">小计</th>
+
+					</tr>
+         <?php foreach ($this->cartProducts as $productid=>$cartProduct) {?>
+         <tr class="even">
+						<td align="center"><input type="checkbox"
+							name="remove[<?php print $productid?>]" /></td>
+						<td align="center"><a href="/shopping/productdetails?id=<?php print $productid?>"><img
+								width="48px" heigth="48px"
+								src="/images/product/<?php print $cartProduct['image']?>" /></a></td>
+						<td valign="center" align="left"><a
+							href="/shopping/productdetails?id=<?php print $productid?>"><?php print $cartProduct['name']?></a>
+						<div></div></td>
+						<td valign="center" align="left"><?php print $cartProduct['description']?></td>
+						<td valign="center" align="right"><input type="text" size="3"
+							value="<?php print $cartProduct['num']?>"
+							name="quantity[<?php print $productid?>]"></td>
+						<td valign="center" align="right">￥<?php print $cartProduct['price']?></td>
+						<td valign="center" align="right">￥<?php print $cartProduct['productTotalPrice']?></td>
+					</tr>
+          <?php }?>
+            
+          
+          
+        </tbody>
+			</table>
+			<div style="width: 100%; display: inline-block;">
+				<table style="float: right; display: inline-block;">
+					<tbody>
+						<!--              小计，如果有运费，启用这里并在后面列出运费等其它费用再算总计
+                    <tr>
+                    <td align="right"><b>Sub-Total:</b></td>
+                    <td align="right">£1,500.00</td>
+                   </tr>-->
+						<tr>
+							<td align="right"><b>总金额:&nbsp;&nbsp;</b></td>
+							<td align="right">￥<?php print $this->totalPrice?></td>
+						</tr>
+					</tbody>
+				</table>
+				<br>
+			</div>
+			<div class="buttons">
+				<table>
+					<tbody>
+						<tr>
+							<td align="left"><a class="button"
+								onclick="javascript:document.getElementById('cart').submit();"><span>修
+										改</span></a></td>
+							<td align="center"><a class="button" href="/index/index"><span>继
+										续 购 物</span></a></td>
+							<td align="right"><a class="button" href="/checkout/shipping"><span>结
+										账</span></a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</form>
+		<!--    </form>-->
+	</div>
+	<div class="bottom">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center"></div>
+	</div>
+
+
+
+
+</div>
+<!-- content -->

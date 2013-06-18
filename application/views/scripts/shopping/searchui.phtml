@@ -1,0 +1,106 @@
+<!--各controller/action刷新的内容-->
+<div id="content">
+	<div class="top">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center">
+			<h1>商 品 搜 索</h1>
+		</div>
+	</div>
+	<div class="middle">
+	<form id="contentsearch" method="get" action="/shopping/searchwithsort">
+		<input type="hidden" name="keyword" value="<?php $this->keyword?>" />
+		<script type="text/javascript">
+		$(document).ready(function() {
+
+			$("select[name=psort]").change(function() {
+				$('#contentsearch').submit();
+			});
+
+		});
+					
+		</script>
+		<div class="buttons">
+			<table>
+				<tbody>
+					<tr class="sort">
+						<td align="left">按: <select name="psort" id="psort">
+								<option value="">默认</option>
+								<option value="name:ASC">名称 A - Z</option>
+								<option value="name:DESC">名称 Z - A</option>
+								<option value="price:ASC">价格 低 &gt; 高</option>
+								<option value="price:DESC">价格 高&gt; 低</option>
+						</select> 排 序
+
+						</td>
+					</tr>
+				</tbody>
+			</table>
+			</form>
+		</div>
+
+		<br />
+		<div class="heading">商品列表</div>
+		<div
+			style="background: #F7F7F7; border: 1px solid #DDDDDD; padding: 10px; margin-top: 3px; margin-bottom: 15px;">
+			<ul class="paging">
+<?php print $this->paging;?>
+</ul>
+			<table class="list">
+				<tbody>
+					<tr>
+        <?php for($i=0; $i<(count($this->searchproducts)<4?count($this->searchproducts):4);$i++) { ?>
+        
+                                   <td style="width: 20%"><a
+							href="/shopping/productdetails?id=<?php print $this->searchproducts[$i]['ProductID'];?>">
+								<div class="image">
+									<img src="/images/product/<?php print $this->searchproducts[$i]['Image'];?>"
+										alt=" " />
+						</div>
+						</a><br /> <a
+							href="/shopping/productdetails?id=<?php print $this->searchproducts[$i]['ProductID'];?>"><?php print $this->searchproducts[$i]['Name']?></a>
+							
+							<div class="name"><?php print $this->searchproducts[$i]['Price'];?>                   
+                 <a title="购买"
+									href="/cart/addproduct?id=<?php print $this->searchproducts[$i]['ProductID'];?>"
+									class="button_add_small">&nbsp;</a>
+							</div></td>
+        <?php }?>
+        
+                     </tr>
+                     					<tr>
+        <?php for($i=4; $i<(count($this->searchproducts)<8?count($this->searchproducts):8);$i++) { ?>
+        
+                                   <td style="width: 20%"><a
+							href="/shopping/productdetails?id=<?php print $this->searchproducts[$i]['ProductID'];?>">
+								<div class="image">
+									<img src="/images/product/<?php print $this->searchproducts[$i]['Image'];?>"
+										alt=" " />
+						</div>
+						</a><br /> <a
+							href="/shopping/productdetails?id=<?php print $this->searchproducts[$i]['ProductID'];?>"><?php print $this->searchproducts[$i]['Name']?></a>
+							
+							<div class="name"><?php print $this->searchproducts[$i]['Price'];?>                   
+                 <a title="购买"
+									href="/cart/addproduct?id=<?php print $this->searchproducts[$i]['ProductID'];?>"
+									class="button_add_small">&nbsp;</a>
+							</div></td>
+        <?php }?>
+        
+                     </tr>
+				</tbody>
+			</table>
+			<ul class="paging">
+<?php print $this->paging;?>
+</ul>
+		</div>
+	</div>
+
+	<div class="bottom">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center"></div>
+	</div>
+
+</div>
+<!-- content -->

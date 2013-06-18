@@ -1,0 +1,59 @@
+<!--各controller/action刷新的内容-->
+<div id="content">
+	<div class="top">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center">
+			<div class="heading">商 品 展 示</div>
+		</div>
+	</div>
+	<div class="middle">
+<?php print $this->message;?>
+</div>
+	<div class="bottom">&nbsp;</div>
+	<div class="top">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center">
+			<div class="heading">最 新 商 品</div>
+		</div>
+	</div>
+	<div class="middle">
+		<table class="list">
+			<tbody>
+				<tr>  
+         <?php ?>  
+              <?php for($i=0;$i<4;$i++) {?>
+                <td width="25%"><a
+						href="/shopping/productdetails?id=<?php print $this->latestProducts[$i]['ProductID'];?>"><img
+							alt="testproduct21"
+							title="<?php print $this->latestProducts[$i]['Image'];?>"
+							src="/images/product/<?php print $this->latestProducts[$i]['Image']; ?>"></a><br>
+						<a
+						href="/shopping/productdetails?id=<?php print $this->latestProducts[$i]['ProductID'];?>"><?php print $this->latestProducts[$i]['Name'];?></a><br>
+						<!--                      <span style="color: #900; font-weight: bold;"></span>-->
+						<?php print $this->latestProducts[$i]['Price']; ?>                      <a
+						title="购买"
+						href="/cart/addproduct?id=<?php print $this->latestProducts[$i]['ProductID'];?>"
+						class="button_add_small">&nbsp;</a><br></td>
+   <?php }?> </tr>
+
+				<tr>    
+              <?php for($i=4;$i<8;$i++) {?>
+                <td width="25%"><a
+						href="/index.php?r=product/view&id=21"><img alt="testproduct21"
+							title="MacBook"
+							src="/images/product/<?php print $this->latestProducts[$i]['Image']; ?>"></a><br>
+						<a href="/index.php?r=product/view&id=21"><?php print $this->latestProducts[$i]['Name'];?></a><br>
+						<!--                      <span style="color: #900; font-weight: bold;"></span>-->
+						<?php print $this->latestProducts[$i]['Price']; ?>                      <a
+						title="购买"
+						href="/cart/addproduct?id=<?php print $this->latestProducts[$i]['ProductID'];?>"
+						class="button_add_small">&nbsp;</a><br></td>
+   <?php } ?> </tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="bottom">&nbsp;</div>
+</div>
+<!-- content -->

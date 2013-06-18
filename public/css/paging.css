@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+.paging {
+display:block;
+height:15px;
+width:auto;
+padding:0;
+margin:0;
+margin-bottom:20px;
+}
+
+.paging li{
+	display:block;
+	float:left;
+	padding:0px 5px 0px 5px;
+}
+
+.page_selected a{
+	color:black
+}

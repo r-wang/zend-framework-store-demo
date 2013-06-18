@@ -1,0 +1,82 @@
+<!--各controller/action刷新的内容-->
+<div id="content">
+	<div class="top">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center">
+			<div class="heading">怡美网店</div>
+
+		</div>
+	</div>
+	<div class="middle">
+		<div>
+
+			<h1>
+				欢迎来到 <font color="brown"> 怡美网店</font>
+			</h1>
+			<br />
+			<p>怡美家园休闲购物网店开张了！欢迎你在这里享受购物的愉悦</p>
+
+			<p>在这里，你可以:</p>
+			<ul>
+				<li>足不出户，购买到美容化妆精品</li>
+				<li>为你的加入挑选时尚、舒适、有品质的服装</li>
+			</ul>
+
+			<p>
+				想了解更多细节？ 请参考：<a href="/">怡美购物指南</a>. 欢迎前往<a href="/">论坛</a>, 分享购物心得
+			</p>
+		</div>
+	</div>
+
+	<div class="bottom">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center"></div>
+	</div>
+	<div class="top">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center">
+			<div class="heading">最 新 商 品</div>
+		</div>
+	</div>
+	<div class="middle">
+		<table class="list">
+			<tbody>
+				<tr>  
+         <?php ?>  
+              <?php for($i=0;$i<4;$i++) {?>
+                <td width="25%"><a
+						href="/shopping/productdetails?id=<?php print $this->latestProducts[$i]['ProductID'];?>"><img
+							alt="testproduct21"
+							title="<?php print $this->latestProducts[$i]['Image'];?>"
+							src="/images/product/<?php print $this->latestProducts[$i]['Image']; ?>"></a><br>
+						<a
+						href="/shopping/productdetails?id=<?php print $this->latestProducts[$i]['ProductID'];?>"><?php print $this->latestProducts[$i]['Name'];?></a><br>
+						<!--                      <span style="color: #900; font-weight: bold;"></span>-->
+						<?php print $this->latestProducts[$i]['Price']; ?>                      <a
+						title="购买"
+						href="/cart/addproduct?id=<?php print $this->latestProducts[$i]['ProductID'];?>"
+						class="button_add_small">&nbsp;</a><br></td>
+   <?php }?> </tr>
+
+				<tr>    
+              <?php for($i=4;$i<8;$i++) {?>
+                <td width="25%"><a
+						href="/index.php?r=product/view&id=21"><img alt="testproduct21"
+							title="MacBook"
+							src="/images/product/<?php print $this->latestProducts[$i]['Image']; ?>"></a><br>
+						<a href="/index.php?r=product/view&id=21"><?php print $this->latestProducts[$i]['Name'];?></a><br>
+						<!--                      <span style="color: #900; font-weight: bold;"></span>-->
+						<?php print $this->latestProducts[$i]['Price']; ?>                      <a
+						title="购买"
+						href="/cart/addproduct?id=<?php print $this->latestProducts[$i]['ProductID'];?>"
+						class="button_add_small">&nbsp;</a><br></td>
+   <?php }?> </tr>
+			</tbody>
+		</table>
+	</div>
+	<div class="bottom">&nbsp;</div>
+</div>
+<!-- content -->

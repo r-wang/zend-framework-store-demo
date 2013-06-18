@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="/css/frontstyle.css"
+	media="screen, projection" />
+<link rel="stylesheet" type="text/css" href="/css/form.css"
+	media="screen, projection" />
+<link rel="stylesheet" type="text/css" href="/css/paging.css"
+	media="screen, projection" />
+
+<!--[if lt IE 8]>
+	<link rel="stylesheet" type="text/css" href="/css/ie.css" media="screen, projection" />
+	<![endif]-->
+<script type="text/javascript" src="/js/jquery-1.10.0.js"></script>
+<script type="text/javascript" src="/js/cart.js"></script>
+
+
+
+<title>怡美网店</title>
+</head>
+<body>
+	<div id="header">
+
+		<div class="div1">
+
+			<div class="logoImg">
+				<a href="#"> <img alt="Your Store" title="Your Store"
+					src="/images/logo.png" />
+				</a>
+			</div>
+			<div id="wrap1">
+				<div class="divlinks">
+					<a style="background-image: url('/images/special.png');" href="#">优惠商品</a>
+					<a style="background-image: url('/images/bookmark.png');"
+						onclick="bookmark(document.location, 'Cameras');">我的收藏</a> <a
+						style="background-image: url('/images/contact.png');" href="#">联系我们</a>
+					<a style="background-image: url('/images/sitemap.png');" href="#">网站地图</a>
+				</div>
+
+
+			</div>
+			<!--  nav mainnavs-->
+			<div class="tabNav" id="my-tabs">
+				<a id="tab_home" href="/index.php" class="selected">首页</a>
+			<?php if (!$this->loginflag) {?>
+			 <a id="tab_login" href="/customer/loginui">登陆</a>
+			<?php } else {?>
+			<a id="tab_login" href="/customer/logout">退出</a>
+			<?php }?>
+            <a id="tab_account" href="/customer/account">用户中心</a> <a
+					id="tab_cart" href="/cart/viewcartui">购物记录</a> <a id="tab_checkout"
+					href="/checkout/shipping">收银台</a>
+			</div>
+
+			<!--      black headerBar under Tab Navigation -->
+			<div class="headerBar">
+
+				<div class="left"></div>
+				<div class="right"></div>
+
+				<!--     breadcrumbs and search area -->
+				<div class="center">
+
+					<div id="breadcrumb">
+						<!-- breadcrumbs -->
+
+					</div>
+
+					<div id="search">
+						<div class="lbSearch">搜索:</div>
+						<div class="inputSearch">
+
+
+
+							<form id="formsearch" action="/shopping/search" method="get">
+								<input style="color: #999;" type="text" value="" name="keyword"
+									id="filter_keyword" />
+							</form>
+						</div>
+						<div class="goSearch">
+							&nbsp;&nbsp;<a class="button"
+								onclick="$('#formsearch').submit(); "><span>Go</span></a>
+						</div>
+					</div>
+					<!-- endof #search-->
+
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+	<div id="container">
+
+
+
+
+		<div id="column_left">
+
+
+			<!--商品目录-->
+			<div class="box">
+				<div class="top">
+					<img alt="" src="/images/category.png" /> &nbsp; 商 品 分 类
+				</div>
+				<div class="middle" id="category">
+					<pre>
+   <?php
+			// var_dump($this->categories);
+			// echo $this->partialLoop('partial-treemap.phtml',
+			// $this->categories) ;
+			?>
+   </pre>
+					<ul id="categorytree">
+
+	
+	 
+<?php
+echo $this->partial ( "recursiveCategory.phtml", array ('categories' => $this->categories ) );
+?>
+</ul>
+				</div>
+				<div class="bottom">&nbsp;</div>
+			</div>
+
+			<div class="box">
+				<div class="top">
+					<img alt="" src="/images/information.png" />&nbsp; 网 站 信 息
+				</div>
+				<div class="middle" id="information">
+					<ul>
+						<li><a href="/">关于我们</a></li>
+						<li><a href="/">条款协议</a></li>
+						<li><a href="/">联系我们</a></li>
+						<li><a href="/">网站地图</a></li>
+					</ul>
+				</div>
+				<div class="bottom">&nbsp;</div>
+			</div>
+
+		</div>
+		<!-- end of column-left -->
+
+		<!--    右边栏    -->
+		<div id="column_right">
+
+			<!--   购物车 -->
+			<div class="box" id="module_cart">
+				<div class="top">
+					<img alt="" src="/images/basket.png" /> &nbsp;我 的 购 物 车
+				</div>
+				<div class="middle">
+					<div style="text-align: center;">
+						<div class="portlet" id="yw1">
+							<div class="portlet-content">
+
+								<table cellspacing="0" cellpadding="2" style="width: 100%;">
+									<tbody>
+                            
+         <?php foreach ($this->cartProducts as $cartProduct) {?>     
+        <tr class="<?php print $cartProduct['id'];?>">
+											<td valign="top" align="left" style="width: 1px"><span
+												id="<?php print $cartProduct['id'];?>" class="cart_remove">&nbsp;</span></td>
+											<td valign="top" align="right" style="width: 1px"><?php print $cartProduct['num']?>&nbsp;x&nbsp;</td>
+											<td valign="top" align="left"><a
+												href="/shopping/productdetails?id=<?php print $cartProduct['id'];?>"><?php print $cartProduct['name']?></a>
+												<div></div></td>
+										</tr>
+   		<?php }?>
+            
+          </tbody>
+								</table>
+								<br>
+									<table cellspacing="0" cellpadding="0" align="right"
+										style="display: inline-block;">
+										<tbody>
+											<tr>
+												<td align="right"><span class="cart_module_total"><b>总金额:</b></span></td>
+												<td align="right"><span class="cart_module_total"><?php print $this->totalPrice;?></span></td>
+											</tr>
+										</tbody>
+									</table>
+									<div style="padding-top: 5px; text-align: center; clear: both;">
+										<a href="/cart/viewcartui">查看购物车</a> | <a
+											href="/checkout/shipping">结账</a>
+									</div>
+							
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<!--   这里是右边栏的 其它box-->
+			<div class="box">
+				<div class="top">
+					<img alt="" src="/images/featured.png">精 品 推 荐 
+				
+				</div>
+				<div class="middle">
+					<table cellspacing="0" cellpadding="2" style="width: 100%;">
+						<tbody>
+        
+<?php foreach($this->promotedProducts as $promotedProduct) { ?>
+<tr>
+								<td valign="top" style="width: 1px"><a
+									href="/shopping/productdetails?id=<?php print $promotedProduct['ProductID'];?>"><img
+										width="38" heigth="38"
+										src="/images/product/<?php print $promotedProduct['Image'];?>"></a></td>
+								<td valign="top"><a
+									href="/shopping/productdetails?id=<?php print $promotedProduct['ProductID'];?>"><?php print $promotedProduct['Name'];?></a>
+									<br> <span style="font-size: 11px; color: #900;"><?php print $promotedProduct['Price'];?></span>
+										<a title="购买"
+										href="/cart/addproduct?id=<?php print $promotedProduct['ProductID'];?>"
+										class="button_add_small">&nbsp;</a></td>
+							</tr>
+
+<?php }?>
+   </tbody>
+					</table>
+				</div>
+				<div class="bottom">&nbsp;</div>
+			</div>
+			<div class="box">
+				<div class="top">
+					<img alt="" src="/images/bestsellers.png">热 销 商 品 
+				
+				</div>
+				<div class="middle">
+					<table cellspacing="0" cellpadding="2" style="width: 100%;">
+						<tbody>
+        
+		<?php foreach($this->hotProducts as $hotProduct) {?>
+        <tr>
+								<td valign="top" style="width: 1px"><a
+									href="/shopping/productdetails?id=<?php print $hotProduct['ProductID'];?>"><img
+										width="38" heigth="38"
+										src="/images/product/<?php print $hotProduct['Image'];?>"></a></td>
+								<td valign="top"><a
+									href="/shopping/productdetails?id=<?php print $hotProduct['ProductID'];?>"><?php print $hotProduct['Name'];?></a>
+									<br> <span style="font-size: 11px; color: #900;"><?php print $hotProduct['Price'];?></span>
+										<a title="购买"
+										href="/cart/addproduct?id=<?php print $hotProduct['ProductID'];?>"
+										class="button_add_small">&nbsp;</a></td>
+							</tr>
+      <?php }?>
+      
+   </tbody>
+					</table>
+				</div>
+				<div class="bottom">&nbsp;</div>
+			</div>
+
+		</div>
+		<!-- end of column-right --> 
+
+<?php echo $this->layout()->content; ?>
+
+<div id="footer">
+			<div class="div1">
+				Theme Designed By <a href="http://karljacobs.co.uk/">2011-10-21</a>
+			</div>
+			<div class="div2">
+				Powered By <a href="ruiqiwang.net">onlinestore</a> <a
+					href="mailto: wangruiqicn@gmail.com">wangruiqicn@gmail.com</a>
+				&copy; 2013
+			</div>
+		</div>
+	</div>
+</body>
+</html>

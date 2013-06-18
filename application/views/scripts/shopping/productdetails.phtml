@@ -1,0 +1,81 @@
+<!--各controller/action刷新的内容-->
+<div id="content">
+	<div class="top">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center">
+    <?php $details = $this->productDetails;?>
+      <h1><?php print $details['Name']?></h1>
+		</div>
+	</div>
+	<div class="middle">
+		<div style="width: 100%; margin-bottom: 30px;">
+			<table style="width: 100%; border-collapse: collapse;">
+				<tbody>
+					<tr>
+						<td style="text-align: center; width: 250px; vertical-align: top;">
+
+
+							<a rel="gallery" class="thickbox" title="product14"
+							href="/images/product/<?php print $details['Image']?>"> <img
+								style="margin-bottom: 3px;" id="image" alt="no picticure"
+								title="product14"
+								src="/images/product/<?php print $details['Image']?>" /> <br />
+								<br /> <br />
+								<div style="width: 200px; float: left;" id="yw0"></div>
+						
+						</td>
+						<td style="padding-left: 15px; width: 296px; vertical-align: top;">
+							<table>
+								<tbody>
+									<tr>
+										<td style="float:left;width:60px"><b>商品价格:</b></td>
+										<td style="width:200px;"> <?php print $details['Price']?> </td>
+									</tr>
+									<tr>
+										<td><b>库存:</b></td>
+										<td><?php print $details['QuantityInStock']?></td>
+									</tr>
+									<tr>
+										<td><b>型号:</b></td>
+										<td><?php print $details['Spec']?></td>
+									</tr>
+									<tr>
+										<td><b>生产厂商:</b></td>
+										<td><?php print $details['Manufacturer']?></a></td>
+									</tr>
+									<tr>
+										<td valign="top"><b>商品描述:</b></td> 
+										<td>                  <?php print $details['Description']?>               </td>
+									</tr>
+								</tbody>
+							</table>
+							<br />
+							<form id="product" enctype="multipart/form-data" method="post"
+								action="/cart/addproduct">
+								<div class="content">
+									数量: <input type="text" value="1" size="3" name="quantity" /> <input
+										type="hidden" value="<?php print $details['ProductID']?>"
+										name="id" /> <a class="button" id="add_to_cart"
+										onclick="$('#product').submit()"><span>放入购物车</span></a>
+								</div>
+								<div>
+									<input type="hidden" value="14" name="product_id" /> <input
+										type="hidden" value="#" name="redirect" />
+								</div>
+							</form>
+						</td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+		<div style="width: 100%; margin-bottom: 30px;">
+			<pre></pre>
+		</div>
+		<div class="bottom">
+			<div class="left"></div>
+			<div class="right"></div>
+			<div class="center"></div>
+		</div>
+	</div>
+	<!-- content -->

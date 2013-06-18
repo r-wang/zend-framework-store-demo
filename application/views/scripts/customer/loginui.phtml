@@ -1,0 +1,63 @@
+<!--各controller/action刷新的内容-->
+<div id="content">
+	<div class="top">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center">
+			<h1>登录</h1>
+		</div>
+	</div>
+	<div class="middle">
+		<p>
+			还没有账号?&nbsp;&nbsp;&nbsp;&nbsp;现在&nbsp;&nbsp;<a
+				href="/customer/registerui"><font color="brown">注册</font></a>
+		</p>
+		<div class="content">
+
+
+			<div class="form">
+
+				<form id="login-form" action="/customer/login" method="post">
+					<div class="row">
+						<p class="note">
+							标记为 <span class="required">*</span>的是必填字段.
+						</p>
+
+						<label for="LoginForm_username" class="required">邮 箱 <span
+							class="required">*</span></label> &nbsp;&nbsp; <input
+							name="LoginForm[email]" id="LoginForm_username" type="text" />
+						<div class="errorMessage" id="LoginForm_username_em_"
+							style="display: none"></div>
+					</div>
+					<!--
+
+-->
+					<div class="row">
+						<label for="LoginForm_password" class="required">密 码 <span
+							class="required">*</span></label> &nbsp;&nbsp; <input
+							name="LoginForm[password]" id="LoginForm_password"
+							type="password" />
+						<div class="errorMessage" id="LoginForm_password_em_"><?php print $this->errMsg;?></div>
+					</div>
+
+
+					<a class="button"
+						onclick="javascript:document.getElementById('login-form').submit();"><span>&nbsp;登
+							录&nbsp;</span></a>
+
+
+				</form>
+			</div>
+			<!-- form -->
+		</div>
+		<!--content-->
+	</div>
+	<!-- ！middle-->
+
+	<div class="bottom">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center"></div>
+	</div>
+</div>
+<!-- content -->

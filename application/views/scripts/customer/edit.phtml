@@ -1,0 +1,99 @@
+<!--各controller/action刷新的内容-->
+<script type="text/javascript" src="/js/validateUpdateForm.js">
+</script>
+
+<div id="content">
+	<div class="top">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center">
+			<h1>修改我的信息</h1>
+		</div>
+	</div>
+	<div class="middle">
+
+		<div class="content">
+
+			<div class="form">
+
+				<form id="register-form" action="/customer/update" method="post">
+
+					<div class="row">
+						<label for="Customer_name" class="required">用户名称 <span
+							class="required">*</span></label> <input name="Customer[name]"
+							id="Customer_name" type="text" maxlength="20"
+							value="<?php print $this->customerDetails['Name'];?>" />
+					</div>
+
+					<div class="row">
+						<label for="Customer_telephone" class="required">固定电话 <span
+							class="required">*</span></label> <input
+							name="Customer[telephone]" id="Customer_telephone" type="text"
+							maxlength="32"
+							value="<?php print $this->customerDetails['TEL'];?>" />
+					</div>
+					<div class="row">
+						<label for="Customer_address" class="required"> 地 址 <span
+							class="required">*</span></label> <input name="Customer[address]"
+							id="Customer_address" type="text" maxlength="128"
+							value="<?php print $this->customerDetails['Address'];?>" />
+					</div>
+
+					<div class="row">
+						<label for="Customer_password" class="required">您的密码 <span
+							class="required">*</span></label> <input
+							name="Customer[password]" id="Customer_password" type="password"
+							maxlength="40" />
+					</div>
+
+					<div class="row">
+						<label for="Customer_verifyPassword" class="required">确认密码 <span
+							class="required">*</span></label> <input
+							name="Customer[verifyPassword]" id="Customer_verifyPassword"
+							type="password" />
+					</div>
+
+
+
+					<div class="row">
+						<label for="Customer_mobile">移动电话</label> <input
+							name="Customer[mobile]" id="Customer_mobile" type="text"
+							maxlength="32"
+							value="<?php print $this->customerDetails['Mobile'];?>" />
+					</div>
+
+
+
+
+					<div class="buttons">
+						<!--        <input type="checkbox" value="1" id="agree"/> -->
+						<table>
+							<tbody>
+								<tr>
+
+									<td width="75" align="right"><a class="button submit"><span>&nbsp;提
+												交&nbsp;</span></a></td>
+									<td width="75" align="right"><a class="button"
+										href="/index.php"><span>&nbsp;取 消&nbsp;</span></a></td>
+
+								</tr>
+							</tbody>
+						</table>
+
+					</div>
+
+
+				</form>
+			</div>
+			<!-- form -->
+		</div>
+	</div>
+	<!-- ！middle-->
+
+	<div class="bottom">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center"></div>
+	</div>
+</div>
+<!-- content -->

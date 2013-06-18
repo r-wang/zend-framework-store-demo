@@ -1,0 +1,130 @@
+<!--各controller/action刷新的内容-->
+<div id="content">
+	<div class="top">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center">
+			<h1>订 单 确 认</h1>
+		</div>
+	</div>
+	<div class="middle">
+		<div class="form">
+
+			<form id="order-form" action="/checkout/submitorder" method="post">
+				<p>
+					带<span class="required">*</span> 字段为必填字段.
+				</p>
+
+				<b style="margin-bottom: 2px; display: block;">送货信息</b>
+				<div class="content">
+					<div class="row">
+    <?php $shipping = $this->shippingDetails?>
+        收货人：<?php print $shipping['receivername']?>;&nbsp;&nbsp;&nbsp;&nbsp;
+        电话：<?php print $shipping['tel']?>;&nbsp;&nbsp;&nbsp;&nbsp;
+        手机：<?php print $shipping['mobile']?>;&nbsp;&nbsp;&nbsp;&nbsp;
+        Email：<?php print $shipping['email']?>; 
+    </div>
+					<div class="row">
+         送货地址：<?php print $shipping['address']?>    </div>
+
+				</div>
+				<b style="margin-bottom: 2px; display: block;">请选择：</b>
+				<div class="content">
+					<div class="row">
+						<label for="Order_shipping_method" class="required">送货方式 <span
+							class="required">*</span></label> <select
+							name="Order[shipping_method]" id="Order_shipping_method">
+<?php foreach ($shipping['shippingMethod'] as $id =>$shippingMethod) {?>
+<option value="<?php print $id?>"><?php print $shippingMethod?></option>
+<?php }?>
+</select>
+					</div>
+
+					<div class="row">
+						<label for="Order_payment_method" class="required">付款方式 <span
+							class="required">*</span></label> <select
+							name="Order[payment_method]" id="Order_payment_method">
+<?php foreach ($shipping['paymentMethod'] as $id => $paymentMethod) {?>
+<option value="<?php print $id?>"><?php print $paymentMethod;?></option>
+<?php }?>
+</select>
+					</div>
+
+				</div>
+				<b style="margin-bottom: 2px; display: block;">订单信息</b>
+				<div class="content">
+					<table width="100%">
+						<tbody>
+							<tr>
+								<th align="left">商品</th>
+								<th align="left">描述</th>
+								<th align="right" width="30px">数量</th>
+								<th align="right">单价</th>
+								<th align="right">小计</th>
+							</tr>
+                    
+            
+            
+         
+		 <?php foreach ($shipping['orderedItems'] as $id => $product) {?>	
+		 <tr class="even">
+								<td valign="center" align="left"><a
+									href="/index.php?r=product/view&id=1"><?php print $product['name']?></a>
+								<div></div></td>
+								<td valign="center" align="left"><?php print $product['description']?></td>
+								<td valign="center" align="right"> <?php print $product['num']?> </td>
+								<td valign="center" align="right">￥<?php print $product['price']?></td>
+								<td valign="center" align="right">￥<?php print $product['productTotalPrice']?></td>
+							</tr>
+         <?php }?>
+          
+            
+        
+
+              </tbody>
+					</table>
+					<br>
+					<div style="width: 100%; display: inline-block;">
+						<table style="float: right; display: inline-block;">
+							<tbody>
+								<tr>
+									<td align="right">商品总金额:</td>
+									<td align="right">￥<?php print $shipping['totalPrice']?></td>
+								</tr>
+							</tbody>
+						</table>
+						<br>
+					</div>
+				</div>
+
+				<div class="content">
+					<label for="Order_comment">备注</label> <br />
+					<textarea style="height: 40px; width: 500px;" name="Order[comment]"
+						id="Order_comment"></textarea>
+				</div>
+
+				<div class="row buttons">
+					<table>
+						<tbody>
+							<tr>
+								<td align="left"><a class="button"
+									href="/index.php?r=checkout/add2cart"><span>返回购物车</span></a></td>
+								<td align="right"><a class="button" id="checkout"
+									onclick="javascript:document.getElementById('order-form').submit();"><span>确认订单</span></a></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+
+			</form>
+		</div>
+		<!-- form -->
+	</div>
+	<!-- middle-->
+	<div class="bottom">
+		<div class="left"></div>
+		<div class="right"></div>
+		<div class="center"></div>
+	</div>
+</div>
+<!-- content -->
