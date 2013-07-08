@@ -17,6 +17,7 @@
 
 
 
+
 <title>怡美网店</title>
 </head>
 <body>
@@ -42,7 +43,7 @@
 			</div>
 			<!--  nav mainnavs-->
 			<div class="tabNav" id="my-tabs">
-				<a id="tab_home" href="/index.php" class="selected">首页</a>
+				<a id="tab_home" href="/index.php">首页</a>
 			<?php if (!$this->loginflag) {?>
 			 <a id="tab_login" href="/customer/loginui">登陆</a>
 			<?php } else {?>
@@ -261,7 +262,7 @@ echo $this->partial ( "recursiveCategory.phtml", array ('categories' => $this->c
 				Theme Designed By <a href="http://karljacobs.co.uk/">2011-10-21</a>
 			</div>
 			<div class="div2">
-				Powered By <a href="ruiqiwang.net">onlinestore</a> <a
+				Powered By <a href="http://ruiqiwang.net">ruiqiwang.net</a> <a
 					href="mailto: wangruiqicn@gmail.com">wangruiqicn@gmail.com</a>
 				&copy; 2013
 			</div>
